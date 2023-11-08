@@ -2,7 +2,7 @@
  var PLAY = 1;
  var END = 0;
  var gameState = PLAY;
-// 2 variavel que vamos colocar a imagem
+// 2 variavel que vamos colocar a imagem  já temos 
 var trex, trex_running, trex_collided;
 var ground, invisibleGround, groundImage;
 
@@ -10,12 +10,12 @@ var cloud, cloudsGroup, cloudImage;
 var obstaclesGroup, obstacle1, obstacle2, obstacle3, obstacle4, obstacle5, obstacle6;
 // pontuação
 var score;
-// Atribua as variáveis e carregue as imagens para gameover (fim de jogo) e restart(reiniciar)
+//  imagens para gameover (fim de jogo) e restart(reiniciar)
 var gameOver, restart;
 
 function preload(){
   trex_running = loadAnimation("trex1.png","trex3.png","trex4.png");
-  // 2 carregar a animação do trex_collided
+  // 2 carregar a animação do trex_collided ( já temos)
   trex_collided = loadAnimation("trex_collided.png");
   
   groundImage = loadImage("ground2.png");
@@ -39,7 +39,7 @@ function setup() {
   
   trex = createSprite(50,180,20,50);
   trex.addAnimation("running", trex_running);
-  // 2 adicionar a animação do trex_collided
+  // 2 adicionar a animação do trex_collided (já temos)
   trex.addAnimation("collided" , trex_collided)
   trex.scale = 0.5;
   
@@ -85,13 +85,15 @@ function draw() {
   background(180);
   // exibindo o texto da pontuação e concatenando
   text("Pontuação: "+ score, 500,50);
+ //console log para ver gameState
  
 
  // condição de estado
   if(gameState===PLAY){
-    //começa false para ter condição para aparecer
-    gameOver.visible = false
-    restart.visible = false
+    //começa visivel  false, game over e restart para ter condição para aparecer
+
+
+   
 //mover o solo
      ground.velocityX= -4;  
  
@@ -125,15 +127,15 @@ function draw() {
   // game over e restart visivel verdadeiro
      gameOver.visible = true;
      restart.visible = true;
-     // 5 o chao e a gravidade
-     ground.velocityX = 0;
-     trex.velocityY = 0
-    // 3 mudar a animação do trex
-    trex.changeAnimation("collided", trex_collided);
+     // 5  gravidade do chao e o trex
 
-    // 4 definir tempo de vida aos objetos do jogo para que nunca sejam destruídos
-     obstaclesGroup.setLifetimeEach(-1);
-     cloudsGroup.setLifetimeEach(-1);
+
+   
+    // 3 mudar a animação do trex
+    
+
+    // 4 definir tempo de vida aos objetos do jogo para que nunca sejam destruídos, sprite.setLifetimeEach();
+    
 
   // Dê velocidade zero a todos os obstáculos e nuvens usando setVelocityXEach()
     obstaclesGroup.setVelocityXEach(0);
